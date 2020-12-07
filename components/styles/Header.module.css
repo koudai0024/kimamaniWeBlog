@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 40px;
+}
+
+.topBar {
+  background: #2e9afe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+}
+.topBar__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.topBar__title {
+  font-size: 24px;
+  color: #fff;
+}
+.topBar__text {
+  font-size: 14px;
+  color: #ffffff;
+}
