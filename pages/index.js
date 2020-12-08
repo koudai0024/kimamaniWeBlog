@@ -25,6 +25,13 @@ const Home = ({ blogs }) => {
     }
   }
 
+  const isThumbnail = (blog) => {
+    if (blog.thumbnail) {
+        return blog.thumbnail.url
+    } else {
+        return '/image/noimage.png'
+    }
+  }
   return (
     <Layout>
       <div className={classes.container}>
@@ -35,7 +42,7 @@ const Home = ({ blogs }) => {
               blogDate={new Date(blog.publishedAt).toLocaleDateString()}
               blogTitle={blog.title}
               blogExcerpt={articleExcerpt(blog)}
-              blogImgSrc={blog.thumbnail.url}
+              blogImgSrc={isThumbnail(blog)}
               blogTags={blog.tags}
             />
           </React.Fragment>
