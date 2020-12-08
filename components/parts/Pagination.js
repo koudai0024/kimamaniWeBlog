@@ -21,7 +21,7 @@ const Pagination = (props) => {
         <div className={classes.pagination}>
             <ul className={classes.pagination__list}>
                 {paths.map((item, index) => (
-                    <li className={(props.params == (index + 1)) ?  `${classes.pagination__itemSelected} ${classes.pagination__item}` : classes.pagination__item}>
+                    <li key={index} className={(props.params == (index + 1)) ?  `${classes.pagination__itemSelected} ${classes.pagination__item}` : classes.pagination__item}>
                         <Link href='/page/[slug]' as={`/page/${index + 1}`}>
                             <a>{ index + 1 }</a>
                         </Link>
