@@ -6,7 +6,6 @@ import Pagination from '../../components/parts/Pagination'
 
 const Page = ({ blogs, data, params }) => {
 
-    console.log(params)
     return (
         <Layout>
             <BlogsList
@@ -56,7 +55,6 @@ export const getStaticProps = async context => {
     );
     const data = await res.json();
 
-    console.log(context)
     return {
         props : {
             blogs: data.contents,

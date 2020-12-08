@@ -44,8 +44,11 @@ export const getStaticPaths = async () => {
     headers: {'X-API-KEY': process.env.API_KEY},
   };
 
-  const res = await fetch('https://koudaiblog.microcms.io/api/v1/blogs', key);
-  const repos = await res.json();
+  const res = await fetch('https://koudaiblog.microcms.io/api/v1/blogs?limit=0', key);
+  const readRes = await res.json();
+  const postCount = readRes.totalCount;
+  const query = await fetch(`https://koudaiblog.microcms.io/api/v1/blogs?limit=${postCount}`, key)
+  const repos = await query.json();
 
   const paths = repos.contents.map(repo => `/blogs/${repo.id}`); 
     return {paths, fallback: false};

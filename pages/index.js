@@ -32,7 +32,6 @@ export const getStaticProps = async (context) => {
   );
   const data = await res.json();
 
-  console.log(context)
 
   return {
     props : {
