@@ -10,7 +10,7 @@ const Header = () => {
                     <p className={classes.topBar__title}>えんじにあblog</p>
                     <p className={classes.topBar__text}>エンジニアが気ままに書くブログ</p>
                 </div>
-                <Nav />
+                {/* <Nav /> */}
             </div>
         </header>
     )
