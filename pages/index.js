@@ -15,6 +15,8 @@ const Home = ({ blogs }) => {
       } else {
         return preformedExcerpt;
       }
+    } else if (!blog.body) {
+      return '';
     } else {
       const preformedBody = blog.body.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
       if (preformedBody.length > 120) {
