@@ -3,6 +3,7 @@
   width: 100%;
   padding: 16px;
   border-radius: 5px;
+  margin-bottom: 32px;
 }
 .card__date {
   display: block;
