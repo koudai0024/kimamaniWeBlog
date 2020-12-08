@@ -4,38 +4,68 @@ import cheerio from 'cheerio';
 import hljs from 'highlight.js'
 import React from 'react'
 import Layout from '../../components/Layout';
+import Head from '../../components/Head'
 
 import classes from '../../styles/[id].module.css'
 
 const BlogId = ({ blog, body }) => {
-    const isThumbnail = (blog) => {
-        if (blog.thumbnail) {
-            return blog.thumbnail.url
-        } else {
-            return '/image/noimage.png'
-        }
+  const isThumbnail = (blog) => {
+    if (blog.thumbnail) {
+        return blog.thumbnail.url
+    } else {
+        return '/image/noimage.png'
     }
-    return (
-        <Layout>
-            <div className={classes.container}>
-                <p className={classes.date}><FontAwesomeIcon icon={faClock} className={classes.date__icon }/>{new Date(blog.publishedAt).toLocaleDateString() }</p>
-                <h1 className={classes.title}>{blog.title}</h1>
-                <div className={classes.tags}>
-                    <FontAwesomeIcon icon={faTag} className={classes.tags__icon} />    
-                    <ul className={classes.tags__list}>
-                        {blog.tags.map(tag => (
-                            <React.Fragment key={tag.id}>
-                                <li className={classes.tags__item}>{tag.name}</li>
-                            </React.Fragment>
-                        ))}
-                    </ul>
-                </div>
-                <div className={classes.visual}>
-                    <img src={isThumbnail(blog)} className={ classes.visual__img }/>    
-                </div>    
-                <div dangerouslySetInnerHTML={{__html: `${body}`}} className={classes.blog}></div>
-            </div>
-        </Layout>
+  }
+
+  const articleExcerpt = (blog) => {
+    if (blog.excerpt) {
+      const preformedExcerpt = blog.excerpt.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+      if (preformedExcerpt.length > 120) {
+        return preformedExcerpt.substr(0, 120);
+      } else {
+        return preformedExcerpt;
+      }
+    } else if (!blog.body) {
+      return '';
+    } else {
+      const preformedBody = blog.body.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+      if (preformedBody.length > 120) {
+        return preformedBody.substr(0, 120);
+      } else {
+        return preformedBody;
+      }
+    }
+  }
+  return (
+    <Layout>
+      <Head
+        title={`${blog.title} | えんじにあブログ`}
+        description={articleExcerpt(blog)}
+        keyword={blog.tags.map(tag => {tag.name})}
+        image={isThumbnail(blog)}
+        url={''}
+      />
+
+
+      <div className={classes.container}>
+        <p className={classes.date}><FontAwesomeIcon icon={faClock} className={classes.date__icon }/>{new Date(blog.publishedAt).toLocaleDateString() }</p>
+        <h1 className={classes.title}>{blog.title}</h1>
+        <div className={classes.tags}>
+          <FontAwesomeIcon icon={faTag} className={classes.tags__icon} />    
+          <ul className={classes.tags__list}>
+            {blog.tags.map(tag => (
+              <React.Fragment key={tag.id}>
+                <li className={classes.tags__item}>{tag.name}</li>
+              </React.Fragment>
+            ))}
+          </ul>
+        </div>
+        <div className={classes.visual}>
+          <img src={isThumbnail(blog)} className={ classes.visual__img }/>    
+        </div>    
+        <div dangerouslySetInnerHTML={{__html: `${body}`}} className={classes.blog}></div>
+      </div>
+    </Layout>
   );
 };
 

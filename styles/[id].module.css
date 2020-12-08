@@ -17,13 +17,16 @@
 
 
 .date {
-  display: block;
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  text-align: right;
   width: 100%;
   margin-bottom: 1em;
 }
 .date__icon {
+  width: 14px;
+  height: auto;
+  font-size: 14px;
   margin-right: 4px;
 }
 .title {
@@ -38,6 +41,8 @@
   margin-bottom: 24px;
 }
 .tags__icon {
+  width: 16px;
+  height: auto;
   font-size: 16px;
   margin-right: 8px;
 }

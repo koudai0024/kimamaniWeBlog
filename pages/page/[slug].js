@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head'
 import React from 'react'
 import Layout from '../../components/Layout';
 import BlogsList from '../../components/parts/BlogsList'
@@ -8,6 +9,9 @@ const Page = ({ blogs, data, params }) => {
 
     return (
         <Layout>
+            <Head>
+                <meta name="robots" content="noindex" />
+            </Head>
             <BlogsList
                 blogs={blogs}
             />

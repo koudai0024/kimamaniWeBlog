@@ -6,7 +6,7 @@ import classes from './styles/BlogsList.module.css'
 
 const BlogsList = ({blogs}) => {
 
-    const articleExcerpt = (blog) => {
+  const articleExcerpt = (blog) => {
     if (blog.excerpt) {
       const preformedExcerpt = blog.excerpt.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
       if (preformedExcerpt.length > 120) {
