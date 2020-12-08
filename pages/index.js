@@ -2,16 +2,20 @@ import Link from 'next/link';
 import React from 'react'
 import Layout from '../components/Layout';
 import BlogsList from '../components/parts/BlogsList'
+import Pagination from '../components/parts/Pagination'
 import Page from './page/[slug]'
 // import classes from '../styles/Home.module.css'
 
-const Home = ({blogs}) => {
+const Home = ({blogs, data}) => {
   
 
   return (
     <Layout>
       <BlogsList
       blogs={blogs}
+      />
+      <Pagination
+      data={data}
       />
     </Layout>
   )
@@ -32,7 +36,8 @@ export const getStaticProps = async () => {
     
     return {
         props : {
-            blogs: data.contents,
+        blogs: data.contents,
+          data: data
         }
     };
 };
