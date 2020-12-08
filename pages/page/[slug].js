@@ -2,13 +2,19 @@ import Link from 'next/link';
 import React from 'react'
 import Layout from '../../components/Layout';
 import BlogsList from '../../components/parts/BlogsList'
+import Pagination from '../../components/parts/Pagination'
 
-const Page = ({ blogs }) => {
+const Page = ({ blogs, data, params }) => {
 
+    console.log(params)
     return (
         <Layout>
             <BlogsList
                 blogs={blogs}
+            />
+             <Pagination
+                data={data}
+                params={params.slug}
             />
         </Layout>
    ) 
@@ -37,7 +43,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async context => {
     const id = context.params.slug;
-    console.log(id)
 
     const key = {
         headers: {'X-API-KEY': process.env.API_KEY},
@@ -50,9 +55,13 @@ export const getStaticProps = async context => {
         key,
     );
     const data = await res.json();
+
+    console.log(context)
     return {
         props : {
             blogs: data.contents,
+            data: data,
+            params: context.params
         }
     };
 };

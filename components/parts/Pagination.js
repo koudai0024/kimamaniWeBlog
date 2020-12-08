@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import classes from './styles/Pagination.module.css'
+
 
 const Pagination = (props) => {
     
@@ -14,32 +16,18 @@ const Pagination = (props) => {
     ))
 
 
-    // const limit = 10;
-    // const total = Math.ceil(props.data.totalCount / limit)
 
-    console.log(paths)
     return (
-        <div>
-            <div>
-
-                {
-                    paths.map((item, index) => (
-                        <div>
-                            <Link href='page/[slug]' as={`page/${index + 1}`}>
-                                <a>{ index + 1 }</a>
-                            </Link>
-                        </div>
-                    ))
-                }
-            {/* {paths.map((item, index) => (
-                <div key={index}>
-                    <Link href={item}>
-                        {index}
-                    </Link>
-                </div>
-            ))} */}
-            </div>
-
+        <div className={classes.pagination}>
+            <ul className={classes.pagination__list}>
+                {paths.map((item, index) => (
+                    <li className={(props.params == (index + 1)) ?  `${classes.pagination__itemSelected} ${classes.pagination__item}` : classes.pagination__item}>
+                        <Link href='/page/[slug]' as={`/page/${index + 1}`}>
+                            <a>{ index + 1 }</a>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }

@@ -8,7 +8,7 @@ const BlogCard = (blog) => {
         <div className={classes.card}>
             <p className={classes.card__date}>{ blog.blogDate }</p>
             <h2 className={classes.card__title}>
-                <Link href="/blogs/[id]" as={`blogs/${blog.blogId}`}>
+                <Link href="/blogs/[id]" as={`/blogs/${blog.blogId}`}>
                     <a>
                         {blog.blogTitle}
                     </a>
