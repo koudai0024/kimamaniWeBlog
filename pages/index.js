@@ -10,13 +10,13 @@ const Home = ({blogs, data}) => {
 
   return (
     <Layout>
-      {/* <Head 
+      <Head 
         title={'気ままにWeBlog'}
         description={'プログラミングの情報や、技術に関する記事を書いています。主にHTML,CSS,PHP,WordPress,JavaScript,React,Next.jsについての記事が多いです。'}
         keyword={'HTML,CSS,WordPress,JavaScript'}
         image={'/image/noimage.png'}
         url={''}
-      /> */}
+      />
       <BlogsList
       blogs={blogs}
       />
