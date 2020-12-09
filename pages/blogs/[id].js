@@ -39,7 +39,7 @@ const BlogId = ({ blog, body }) => {
   return (
     <Layout>
       <Head
-        title={`${blog.title} | えんじにあブログ`}
+        title={`${blog.title} | 気ままにWeBlog`}
         description={articleExcerpt(blog)}
         keyword={blog.tags.map(tag => {tag.name})}
         image={isThumbnail(blog)}

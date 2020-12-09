@@ -6,11 +6,18 @@
   margin-bottom: 32px;
 }
 .card__date {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 100%;
   font-size: 12px;
-  text-align: right;
   margin-bottom: 8px;
+}
+.data__icon {
+  width: 12px;
+  height: auto;
+  font-size: 12px;
+  margin-right: 4px;
 }
 .card__title {
   font-size: 24px;
@@ -47,6 +54,12 @@
   display: flex;
   align-items: center;
   margin-top: auto;
+}
+.tags__icon {
+  width: 14px;
+  height: auto;
+  font-size: 14px;
+  margin-right: 8px;
 }
 .tags__item {
   font-size: 14px;

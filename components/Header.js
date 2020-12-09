@@ -10,8 +10,8 @@ const Header = () => {
                 <div className={classes.topBar__content}>
                     <Link href="/">
                         <a>
-                            <p className={classes.topBar__title}>えんじにあblog</p>
-                            <p className={classes.topBar__text}>エンジニアが気ままに書くブログ</p>
+                            <p className={classes.topBar__title}>気ままにWeBlog</p>
+                            <p className={classes.topBar__text}>気ままに、web系技術に関する情報をお伝えします。</p>
                         </a>
 
                     </Link>

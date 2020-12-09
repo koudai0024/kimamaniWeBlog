@@ -41,6 +41,7 @@ export const getStaticPaths = async () => {
        paths.push(`/page/${p}`) 
     ))
 
+    console.log(range)
     return {paths, fallback: false};
 };
 
