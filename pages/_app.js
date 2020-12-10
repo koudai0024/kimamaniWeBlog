@@ -17,6 +17,7 @@ const App = ({ Component, pageProps }) => {
     }
   }, [router.events])
 
+
   return <Component {...pageProps} />
 }
 
