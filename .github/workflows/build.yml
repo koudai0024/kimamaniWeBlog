@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: Create .env file
+        run: echo "${{ secrets.API_KEY }}" > .env
       - run: npm ci
       - run: npm run export
 
