@@ -4,6 +4,8 @@ on:
   push:
   pull_request:
     types: [opened, synchronize]
+  repository_dispatch:
+    types: [blog_post]
 
 jobs:
   build:
