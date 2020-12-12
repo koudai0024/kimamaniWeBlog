@@ -1,6 +1,7 @@
 import '../styles/reset.css'
 import '../styles/globals.css'
-import 'highlight.js/styles/hybrid.css';
+import 'highlight.js/styles/hybrid.css'
+import NextNprogress from 'nextjs-progressbar'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as gtag from '../lib/gtag'
@@ -18,7 +19,12 @@ const App = ({ Component, pageProps }) => {
   }, [router.events])
 
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <NextNprogress />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default App
