@@ -87,6 +87,8 @@ const CardVisual = styled.div`
     overflow: hidden;
     @media (max-width: 820px) {
         margin-bottom: 16px;
+        max-width: 300px;
+        width: 100%;
     }
     .img {
         width: 100%;
