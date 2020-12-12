@@ -60,7 +60,7 @@ const BlogContainer = styled.div`
   }
 
   @media (max-width: 820px) {
-    width: 95%auto;
+    width: 95%;
   }
 `;
 
