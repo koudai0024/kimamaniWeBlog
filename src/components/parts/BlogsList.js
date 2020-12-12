@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react'
+import styled from 'styled-components';
 import BlogCard from './BlogCard'
 
-import classes from './styles/BlogsList.module.css'
 
 const BlogsList = ({blogs}) => {
 
@@ -34,9 +34,9 @@ const BlogsList = ({blogs}) => {
     }
   }
   return (
-      <div className={classes.container}>
+      <BlogContainer>
         {blogs.map(blog => (
-          <React.Fragment key="blog.id">
+          <React.Fragment key={blog.id}>
             <BlogCard
               blogId={blog.id}
               blogDate={new Date(blog.publishedAt).toLocaleDateString()}
@@ -47,8 +47,21 @@ const BlogsList = ({blogs}) => {
             />
           </React.Fragment>
         ))}
-      </div>
+      </BlogContainer>
   );
 }
+
+const BlogContainer = styled.div`
+  width: 1080px;
+  margin: 0 auto;
+
+  @media (max-width: 1080px) and (min-width: 820px) {
+    width: 760px;
+  }
+
+  @media (max-width: 820px) {
+    width: 95%auto;
+  }
+`;
 
 export default BlogsList

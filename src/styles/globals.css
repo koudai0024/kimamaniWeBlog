@@ -18,6 +18,3 @@ a {
 * {
   box-sizing: border-box;
 }
-.content-wrap {
-  min-height: 90vh;
-}

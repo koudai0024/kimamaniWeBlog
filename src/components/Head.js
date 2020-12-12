@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default ({title, description, keyword, image, url}) => {
+const HeadMeta = ({title, description, keyword, image, url}) => {
     return (
         <Head>
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,3 +23,5 @@ export default ({title, description, keyword, image, url}) => {
         </Head>
     )
 }
+
+export default HeadMeta

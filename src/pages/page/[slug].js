@@ -11,6 +11,7 @@ const Page = ({ blogs, data, params }) => {
         <Layout>
             <Head>
                 <meta name="robots" content="noindex" />
+                <title>気ままにWeBlog</title>
             </Head>
             <BlogsList
                 blogs={blogs}
