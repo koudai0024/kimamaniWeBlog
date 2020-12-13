@@ -21,7 +21,9 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
-      <NextNprogress />
+      <NextNprogress
+        color="#40FF00"
+      />
       <Component {...pageProps} />
     </>
   );
