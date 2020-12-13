@@ -8,13 +8,14 @@ import Pagination from '../components/parts/Pagination'
 const Home = ({blogs, data}) => {
   
 
+
   return (
     <Layout>
       <HeadMeta 
         title={'気ままにWeBlog'}
         description={'プログラミングの情報や、技術に関する記事を書いています。主にHTML,CSS,PHP,WordPress,JavaScript,React,Next.jsについての記事が多いです。'}
         keyword={'HTML,CSS,WordPress,JavaScript'}
-        image='/image/noimage.png'
+        image={'/image/noimage.png'}
         url={''}
       />
       <BlogsList
@@ -27,6 +28,7 @@ const Home = ({blogs, data}) => {
     </Layout>
   )
 };
+
 
 export const getStaticProps = async (context) => {
 
