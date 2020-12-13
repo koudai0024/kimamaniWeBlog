@@ -2,6 +2,8 @@ name: Netlify
 
 on:
   push:
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize]
   repository_dispatch:
