@@ -3,13 +3,21 @@ import { faTag, faClock } from '@fortawesome/free-solid-svg-icons'
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
 import React from 'react'
+import {GetStaticProps} from 'next'
 import Layout from '../../components/Layout';
 import HeadMeta from '../../components/Head'
 
 import styled from 'styled-components';
 
-const BlogId = ({ blog, body }) => {
-  const isThumbnail = (blog) => {
+
+
+type BlogProps = {
+  blog: BlogTypes,
+  body: object
+}
+
+const BlogId = ({ blog, body }: BlogProps) => {
+  const isThumbnail = (blog: BlogTypes) => {
     if (blog.thumbnail) {
         return blog.thumbnail.url
     } else {
@@ -17,7 +25,7 @@ const BlogId = ({ blog, body }) => {
     }
   }
 
-  const articleExcerpt = (blog) => {
+  const articleExcerpt = (blog: BlogTypes) => {
     if (blog.excerpt) {
       const preformedExcerpt = blog.excerpt.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
       if (preformedExcerpt.length > 120) {
@@ -36,12 +44,15 @@ const BlogId = ({ blog, body }) => {
       }
     }
   }
+
+  const tags: Array<void> = blog.tags.map(tag => {tag.name});
+  const keywordtext: string = tags.join(',');
   return (
     <Layout>
       <HeadMeta
         title={`${blog.title} | 気ままにWeBlog`}
         description={articleExcerpt(blog)}
-        keyword={blog.tags.map(tag => {tag.name})}
+        keyword={keywordtext}
         image={isThumbnail(blog)}
         url={''}
       />
@@ -215,7 +226,7 @@ const ArtcleContents = styled.div`
 `;
 
 export const getStaticPaths = async () => {
-  const key = {
+  const key: object = {
     headers: {'X-API-KEY': process.env.API_KEY},
   };
 
@@ -225,11 +236,11 @@ export const getStaticPaths = async () => {
   const query = await fetch(`https://koudaiblog.microcms.io/api/v1/blogs?limit=${postCount}`, key)
   const repos = await query.json();
 
-  const paths = repos.contents.map(repo => `/blogs/${repo.id}`); 
-    return {paths, fallback: false};
+  const paths: object = repos.contents.map((repo: BlogTypes) => `/blogs/${repo.id}`); 
+    return {paths: paths, fallback: false};
   };
 
-export const getStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params.id;
 
   const key = {

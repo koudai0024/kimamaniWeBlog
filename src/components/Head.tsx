@@ -1,6 +1,14 @@
 import Head from 'next/head'
 
-const HeadMeta = ({title, description, keyword, image, url}) => {
+type Props = {
+    title?: string,
+    description?: string,
+    keyword?: string,
+    image?: string,
+    url?: string
+}
+
+const HeadMeta = ({title, description, keyword, image, url}: Props) => {
     return (
         <Head>
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />

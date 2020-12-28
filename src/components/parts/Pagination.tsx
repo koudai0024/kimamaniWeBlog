@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import styled from 'styled-components';
 
+type Props = {
+    data: BlogsTypes,
+    params: number
+}
 
-
-const Pagination = (props) => {
+const Pagination = (props: Props) => {
     
 
     const limit = 10;
-    const range = (start, end) =>
+    const range = (start: number, end: number) =>
         [...Array(end - start + 1)].map((_, i) => start + i);
    
-    const paths = []
+    const paths: Array<string> = []
     range(1, Math.ceil(props.data.totalCount / limit)).map((p) => (
        paths.push(`/page/${p}`) 
     ))

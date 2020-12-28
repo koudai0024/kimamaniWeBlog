@@ -5,26 +5,28 @@ import { faTag, faClock } from '@fortawesome/free-solid-svg-icons';
 
 import styled from 'styled-components';
 
-const BlogCard = (blog) => {
+const BlogCard = (blog: BlogTypes) => {
+
+    const src: string = String(blog.thumbnail)
     return (
         <Card>
-            <CardDate><FontAwesomeIcon icon={faClock} className="icon" />{ blog.blogDate }</CardDate>
+            <CardDate><FontAwesomeIcon icon={faClock} className="icon" />{ blog.publishedAt }</CardDate>
             <CardTitle>
-                <Link href="/blogs/[id]" as={`/blogs/${blog.blogId}`}>
+                <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                     <a>
-                        {blog.blogTitle}
+                        {blog.title}
                     </a>
                 </Link>
             </CardTitle>
             <CardContents>
                 <CardVisual>
-                    <img src={blog.blogImgSrc} className="img"/>
+                    <img src={src} className="img"/>
                 </CardVisual>
                 <CardInfo>
-                    <CardExcerpt>{blog.blogExcerpt}</CardExcerpt>
+                    <CardExcerpt>{blog.excerpt}</CardExcerpt>
                     <CardTags>
                         <li><FontAwesomeIcon icon={faTag} className="icon" /></li>
-                        {blog.blogTags.map(tag => (
+                        {blog.tags.map(tag => (
                             <React.Fragment key="tag.id">
                                 <li className="item">{ tag.name }</li>
                             </React.Fragment>

@@ -1,13 +1,16 @@
 import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
-
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 
 config.autoAddCss = false
 
-const Layout = (props) => {
+type Props = {
+    children?: React.ReactNode;
+};
+
+const Layout = (props: Props) => {
     return (
         <div>
             <Header />

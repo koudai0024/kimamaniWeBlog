@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import React from 'react'
+import {GetStaticProps} from 'next'
 import Layout from '../components/Layout';
 import HeadMeta from '../components/Head'
 import BlogsList from '../components/parts/BlogsList'
 import Pagination from '../components/parts/Pagination'
 
-const Home = ({blogs, data}) => {
+
+type HomeProps = {
+  blogs: BlogsTypes,
+  data: object
+}
+
+const Home = ({blogs, data}: HomeProps) => {
   
 
   return (
@@ -22,15 +29,15 @@ const Home = ({blogs, data}) => {
       />
       <Pagination
         data={data}
-        params="1"
+        params={1}
       />
     </Layout>
   )
 };
 
-export const getStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
 
-  const key = {
+  const key: object = {
       headers: {'X-API-KEY': process.env.API_KEY},
   };
 
@@ -43,7 +50,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props : {
-      blogs: data.contents,
+      blogs: data,
       data: data,
     }
   };

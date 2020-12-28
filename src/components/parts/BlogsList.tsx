@@ -3,10 +3,13 @@ import React from 'react'
 import styled from 'styled-components';
 import BlogCard from './BlogCard'
 
+type Props = {
+  blogs: BlogsTypes
+}
 
-const BlogsList = ({blogs}) => {
+const BlogsList = ({blogs}: Props) => {
 
-  const articleExcerpt = (blog) => {
+  const articleExcerpt = (blog: BlogTypes) => {
     if (blog.excerpt) {
       const preformedExcerpt = blog.excerpt.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
       if (preformedExcerpt.length > 120) {
@@ -26,24 +29,29 @@ const BlogsList = ({blogs}) => {
     }
   }
 
-  const isThumbnail = (blog) => {
+  const isThumbnail = (blog: BlogTypes): object => {
     if (blog.thumbnail) {
-        return blog.thumbnail.url
+      return [
+        blog.thumbnail.url
+      ]
     } else {
-        return '/image/noimage.png'
+      return [
+        blog.thumbnail.url = '/image/noimage.png'
+      ]
     }
   }
+
   return (
-      <BlogContainer>
-        {blogs.map(blog => (
+    <BlogContainer>
+        {blogs.contents.map(blog => (
           <React.Fragment key={blog.id}>
             <BlogCard
-              blogId={blog.id}
-              blogDate={new Date(blog.publishedAt).toLocaleDateString()}
-              blogTitle={blog.title}
-              blogExcerpt={articleExcerpt(blog)}
-              blogImgSrc={isThumbnail(blog)}
-              blogTags={blog.tags}
+              id={blog.id}
+              publishedAt={new Date(blog.publishedAt).toLocaleDateString()}
+              title={blog.title}
+              excerpt={articleExcerpt(blog)}
+              thumbnail={isThumbnail(blog)}
+              tags={blog.tags}
             />
           </React.Fragment>
         ))}
