@@ -70,7 +70,7 @@ const BlogId = ({ blog, body }: BlogProps) => {
           ))}
         </ArticleTags>
         <ArticleVisual>
-          <img src={isThumbnail(blog)} className="img"/>    
+          <img src={isThumbnail(blog)} className="img" loading="lazy"/>    
         </ArticleVisual>    
         <ArtcleContents dangerouslySetInnerHTML={{__html: `${body}`}}></ArtcleContents>
       </Article>
@@ -258,6 +258,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
     $(elm).addClass('hljs');
+  });
+  $('img').each((_, elm) => {
+    $(elm).attr('loading', 'lazy');
   });
 
   return {

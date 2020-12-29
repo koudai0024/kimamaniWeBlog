@@ -20,7 +20,7 @@ const BlogCard = (blog: BlogTypes) => {
             </CardTitle>
             <CardContents>
                 <CardVisual>
-                    <img src={src} className="img"/>
+                    <img src={src} className="img" loading="lazy"/>
                 </CardVisual>
                 <CardInfo>
                     <CardExcerpt>{blog.excerpt}</CardExcerpt>

@@ -9,7 +9,7 @@ import Pagination from '../components/parts/Pagination'
 
 type HomeProps = {
   blogs: BlogsTypes,
-  data: object
+  data:  BlogsTypes
 }
 
 const Home = ({blogs, data}: HomeProps) => {
