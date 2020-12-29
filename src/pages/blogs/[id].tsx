@@ -7,6 +7,8 @@ import {GetStaticProps} from 'next'
 import Layout from '../../components/Layout';
 import HeadMeta from '../../components/Head'
 
+import fetchWrap from '../../lib/fetch'
+
 import styled from 'styled-components';
 
 
@@ -226,15 +228,10 @@ const ArtcleContents = styled.div`
 `;
 
 export const getStaticPaths = async () => {
-  const key: object = {
-    headers: {'X-API-KEY': process.env.API_KEY},
-  };
 
-  const res = await fetch('https://koudaiblog.microcms.io/api/v1/blogs?limit=0', key);
-  const readRes = await res.json();
+  const readRes = await fetchWrap('blogs', 'limit=0');
   const postCount = readRes.totalCount;
-  const query = await fetch(`https://koudaiblog.microcms.io/api/v1/blogs?limit=${postCount}`, key)
-  const repos = await query.json();
+  const repos = await fetchWrap('blogs', `limit=${postCount}`)
 
   const paths: object = repos.contents.map((repo: BlogTypes) => `/blogs/${repo.id}`); 
     return {paths: paths, fallback: false};
@@ -247,11 +244,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     headers: {'X-API-KEY': process.env.API_KEY},
   };
 
-  const res = await fetch(
-    `https://koudaiblog.microcms.io/api/v1/blogs/${id}`,
-    key,
-  );
-  const blog = await res.json();
+  const blog = await fetchWrap(`blogs/${id}`)
     
   const $ = cheerio.load(blog.body);
   $('pre code').each((_, elm) => {

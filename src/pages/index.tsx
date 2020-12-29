@@ -6,6 +6,8 @@ import HeadMeta from '../components/Head'
 import BlogsList from '../components/parts/BlogsList'
 import Pagination from '../components/parts/Pagination'
 
+import fetchWrap from '../lib/fetch'
+
 
 type HomeProps = {
   blogs: BlogsTypes,
@@ -37,16 +39,7 @@ const Home = ({blogs, data}: HomeProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const key: object = {
-      headers: {'X-API-KEY': process.env.API_KEY},
-  };
-
-  const res = await fetch(
-      `https://koudaiblog.microcms.io/api/v1/blogs/`,
-      key,
-  );
-  const data = await res.json();
-
+  const data = await fetchWrap('blogs');
 
   return {
     props : {
