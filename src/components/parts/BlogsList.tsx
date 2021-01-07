@@ -35,12 +35,15 @@ const BlogsList = ({blogs}: Props) => {
         blog.thumbnail.url
       ]
     } else {
+      blog.thumbnail = {
+        "url": "/image/noimage.png"
+      }
       return [
-        blog.thumbnail.url = '/image/noimage.png'
+        blog.thumbnail.url
       ]
     }
   }
-
+  
   return (
     <BlogContainer>
         {blogs.contents.map(blog => (

@@ -24,7 +24,7 @@ const Home = ({blogs, data}: HomeProps) => {
         description={'プログラミングの情報や、技術に関する記事を書いています。主にHTML,CSS,PHP,WordPress,JavaScript,React,Next.jsについての記事が多いです。'}
         keyword={'HTML,CSS,WordPress,JavaScript'}
         image={'/image/noimage.png'}
-        url={''}
+        url={'https://kimamaniweb.com/image/noimage.png'}
       />
       <BlogsList
       blogs={blogs}
